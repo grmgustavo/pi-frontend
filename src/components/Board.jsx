@@ -1,13 +1,12 @@
 import React from "react";
 import Task from "./Task"
 
-const Board = ({ boardTitle, tasks, changeState }) => {
+const Board = ({ boardTitle, tasks, changeStateFoward, changeStateBackwards, deleteTask }) => {
     return (
         <div className="boards">
             <div className="board-title">{boardTitle}</div>
             <div className="board-content">
-                <Task boardTitle={boardTitle} tasks={tasks} changeState={changeState} />
-
+                <Task boardTitle={boardTitle} tasks={tasks} changeStateFoward={changeStateFoward} changeStateBackwards={changeStateBackwards} deleteTask={deleteTask} />
             </div>
         </div>
     )

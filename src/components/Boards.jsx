@@ -1,12 +1,12 @@
 import React from "react"
 import Board from "./Board"
 
-const Boards = ({ tasks, changeState }) => {
+const Boards = ({ tasks, changeStateFoward, changeStateBackwards, deleteTask }) => {
     return (
         <div className="board-container">
-            <Board boardTitle="A fazer" tasks={tasks} changeState={changeState} />
-            <Board boardTitle="Fazendo" tasks={tasks} changeState={changeState} />
-            <Board boardTitle="Feito" tasks={tasks} changeState={changeState} />
+            <Board boardTitle="A fazer" tasks={tasks} changeStateFoward={changeStateFoward} changeStateBackwards={changeStateBackwards} deleteTask={deleteTask} />
+            <Board boardTitle="Fazendo" tasks={tasks} changeStateFoward={changeStateFoward} changeStateBackwards={changeStateBackwards} deleteTask={deleteTask} />
+            <Board boardTitle="Feito" tasks={tasks} changeStateFoward={changeStateFoward} changeStateBackwards={changeStateBackwards} deleteTask={deleteTask} />
         </div>
     )
 }

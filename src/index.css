@@ -16,10 +16,16 @@ header {
 }
 
 .title {
-  font-size: 4vh;
+  font-size: 3vh;
   color: #ffffff;
   forn-weight: 100;
   margin-top: 3vh;
+}
+
+@media(max-width: 768px) {
+  .title {
+    font-size: 2vh;
+  }
 }
 
 .login-title {
@@ -31,12 +37,13 @@ header {
 
 .login-form-container {
   width: 75vh;
-  height: 30vh;
+  height: 100%;
   margin: 0 auto;
   font-size: 5vh;
   padding: 1vh;
   background-color: #466067;
   border-radius: 0.5vh;
+  padding: 2vh;
 }
 
 .login-form {
@@ -150,7 +157,7 @@ header {
 }
 
 .boards {
-  width: 32vh;
+  width: 32vw;
   height: 70vh;
   background-color: #BBCCE9;
   border-radius: 0.5vh;
@@ -160,7 +167,7 @@ header {
 }
 
 .board-title {
-  width: 100%;
+  width: 3vw;
   height: 5vh;
   background-color: #BBCCE9;
   border-radius: 0.5vh;
@@ -173,7 +180,7 @@ header {
 }
 
 .task {
-  width: 28vh;
+  width: 25vw;
   height: 5vh;
   background-color: #BBCCE9;
   border-radius: 0.5vh;
@@ -202,13 +209,24 @@ header {
   color: #fff;
   font-weight: bold;
   background-color: #484450;
-  font-size: 2vh;
+  font-size: 110%;
   border: none;
   border-radius: 0.5vh;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.task-button:hover {
+  background-color: #64DBF2;
+  color: #484450;
+}
+
+.task-button:disabled {
+  background-color: #484450;
+  color: #ffffff;
+  cursor: not-allowed;
 }
 
 .new-task-modal {

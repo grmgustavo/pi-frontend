@@ -1,6 +1,6 @@
 import React from "react";
 
-const LoginPage = () => {
+const CreateAccountPage = () => {
     return (
         <div>
             <h1 className="login-title">Gerenciador de Tarefas</h1>
@@ -12,10 +12,12 @@ const LoginPage = () => {
                     <div className="login-form-group">
                         <input type="password" id="password" name="password" placeholder="Senha" className="login-form-field" />
                     </div>
-                    <a href="/recover" className="forgotten-password-button">Esqueceu a senha?</a>
+                    <div className="login-form-group">
+                        <input type="password" id="password" name="password" placeholder="Repita a Senha" className="login-form-field" />
+                    </div>
                     <div className="login-form-buttons-container">
-                        <a href="/create" className="login-form-buttons">Criar Conta</a>
-                        <a href="/home" className="login-form-buttons">Entrar</a>
+                        <a href="/" className="login-form-buttons">Cancelar</a>
+                        <a href="/" className="login-form-buttons">Criar Conta</a>
                     </div>
                 </div>
             </div>
@@ -23,4 +25,4 @@ const LoginPage = () => {
     );
 }
 
-export default LoginPage;
+export default CreateAccountPage;
