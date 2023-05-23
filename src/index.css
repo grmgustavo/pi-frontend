@@ -236,8 +236,8 @@ header {
   right: 0;
   bottom: 0;
   margin: auto auto;
-  width: 100vh;
-  height: 15vh;
+  width: 85vh;
+  height: 45vh;
   background-color: #466067;
   display: flex;
   flex-direction: row;
@@ -253,18 +253,17 @@ header {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 1vh;
 }
 
 .new-task-title {
-  font-size: 2vh;
+  font-size: 3vh;
   color: #ffffff;
   font-weight: bold;
 }
 
 .input-new-task {
   width: 50vh;
-  height: 4vh;
+  height: 10vh;
   background-color: #BBCCE9;
   border-radius: 0.5vh;
   border: none;
@@ -274,10 +273,10 @@ header {
 }
 
 .new-task-buttons-container {
-  margin: 1.2vh;
+  margin: 5vh;
   display: flex;
   justify-content: space-between;
-  width: 45vh;
+  width: 40vh;
 }
 
 .new-task-buttons {
@@ -287,7 +286,7 @@ header {
   align-items: center;
   justify-content: center;
   width: 12vh;
-  height: 2vh;
+  height: 5vh;
   border-radius: 0.5vh;
   border: 0.1vh solid #ffffff;
   font-size: 1.5vh;
@@ -300,4 +299,124 @@ header {
 .new-task-buttons:hover {
   background-color: #466067;
   color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .login-form-container {
+    width: 90vw;
+    font-size: 3.5vh;
+  }
+
+  .login-title {
+    font-size: 8vh;
+    margin-top: 10vh;
+    margin-bottom: 8vh;
+  }
+
+  .login-form-field {
+    width: 70vw;
+    height: 8vh;
+    font-size: 3vh;
+  }
+
+  .forgotten-password-button {
+    width: 71vw;
+    font-size: 2.5vh;
+  }
+
+  .login-form-buttons-container {
+    width: 71vw;
+  }
+
+  .login-form-buttons {
+    width: 32vw;
+    height: 10vh;
+    font-size: 3vh;
+  }
+
+  header {
+    height: 40vh;
+    display: flex;
+    padding: 0 1em;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 5vh;
+    margin-top: 5vh;
+  }
+
+  .header-buttons-container {
+    width: 50vw;
+  }
+
+  .header-buttons {
+    width: 22vw;
+    height: 10vh;
+    font-size: 3vh;
+  }
+
+  .board-container {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    flex-direction: column;
+  }
+
+  .boards {
+    width: 70vw;
+    height: 55vh;
+    margin-bottom: 5vh;
+  }
+
+  .board-title {
+    width: 8vw;
+    height: 10vh;
+    font-size: 4vh;
+  }
+
+  .task {
+    width: 60vw;
+    height: 10vh;
+    font-size: 3vh;
+  }
+
+  .task-name {
+    font-size: 2.5vh;
+  }
+
+  .task-button {
+    width: 5vh;
+    height: 5vh;
+    font-size: 3vh;
+  }
+
+  .new-task-modal {
+    width: 90vw;
+    height: 50vh;
+  }
+
+  .new-task-form {
+    margin: 5vh;
+  }
+
+  .new-task-title {
+    font-size: 4vh;
+  }
+
+  .input-new-task {
+    width: 70vw;
+    height: 15vh;
+    font-size: 2vh;
+  }
+
+  .new-task-buttons-container {
+    margin: 10vh;
+    width: 60vw;
+  }
+
+  .new-task-buttons {
+    width: 22vw;
+    height: 10vh;
+    font-size: 2vh;
+  }
 }
