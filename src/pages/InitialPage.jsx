@@ -4,84 +4,95 @@ import Boards from "../components/Boards";
 import Modal from "../components/Modal";
 
 const InitialPage = () => {
-
+    const [tasks, setTasks] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [taskName, setTaskName] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
 
-    const handleOpenModal = () => {
-        isOpen === false ? setIsOpen(true) : setIsOpen(false)
-    }
-    let [tasks, setTasks] = useState([
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
 
-    ])
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     const addTask = (newTask) => {
         setTasks([...tasks, newTask]);
     };
 
     const changeStateFoward = (id, state) => {
-        if (state === 'A fazer') {
+        if (state === "A fazer") {
             setTasks(tasks.map((task) => {
                 if (task.id === id) {
-                    task.state = 'Fazendo'
+                    task.state = "Fazendo";
                 }
-                return task
-            }))
+                return task;
+            }));
         }
-        if (state === 'Fazendo') {
+        if (state === "Fazendo") {
             setTasks(tasks.map((task) => {
                 if (task.id === id) {
-                    task.state = 'Feito'
+                    task.state = "Feito";
                 }
-                return task
-            }))
+                return task;
+            }));
         }
-    }
+    };
 
     const changeStateBackwards = (id, state) => {
-        if (state === 'Fazendo') {
+        if (state === "Fazendo") {
             setTasks(tasks.map((task) => {
                 if (task.id === id) {
-                    task.state = 'A fazer'
+                    task.state = "A fazer";
                 }
-                return task
-            }))
+                return task;
+            }));
         }
-        if (state === 'Feito') {
+        if (state === "Feito") {
             setTasks(tasks.map((task) => {
                 if (task.id === id) {
-                    task.state = 'Fazendo'
+                    task.state = "Fazendo";
                 }
-                return task
-            }))
+                return task;
+            }));
         }
-    }
+    };
 
     const deleteTask = (id) => {
-        setTasks(tasks.filter((task) => task.id !== id))
-    }
+        setTasks(tasks.filter((task) => task.id !== id));
+    };
+
+    const handleTaskNameChange = (event) => {
+        setTaskName(event.target.value);
+    };
+
+    const handleCreateTask = () => {
+        const newTask = {
+            id: tasks.length + 1,
+            name: taskName,
+            state: "A fazer",
+        };
+        addTask(newTask);
+        closeModal();
+    };
 
     return (
         <div>
-            <Header tasks={tasks} onOpenModal={handleOpenModal} />
-            <Boards tasks={tasks} changeStateFoward={changeStateFoward} changeStateBackwards={changeStateBackwards} deleteTask={deleteTask} />
-            <Modal isOpen={isOpen}>
-                <div className="new-task-form">
-                    <p className="new-task-title">{'Nova Tarefa'}</p>
-                    <input type="text" className="input-new-task" placeholder="Nome da nova tarefa" onChange={(text) => {
-                        setTaskName(text.target.value)
-                    }} />
-                    <div className="new-task-buttons-container">
-                        <button className="new-task-buttons" onClick={handleOpenModal}>Cancelar</button>
-                        <button className="new-task-buttons" onClick={() => {
-                            addTask({ id: tasks.length + 1, name: taskName, state: "A fazer" })
-                            handleOpenModal()
-                        }}>Criar</button>
-                    </div>
-                </div >
-            </Modal>
+            <Header onOpenModal={openModal} />
+            <Boards
+                tasks={tasks}
+                changeStateFoward={changeStateFoward}
+                changeStateBackwards={changeStateBackwards}
+                deleteTask={deleteTask}
+            />
+            <Modal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                onTaskNameChange={handleTaskNameChange}
+                onCreateTask={handleCreateTask}
+            />
         </div>
     );
-}
+};
 
-export default InitialPage
+export default InitialPage;

@@ -1,4 +1,3 @@
-import React from "react"
 import Board from "./Board"
 
 const Boards = ({ tasks, changeStateFoward, changeStateBackwards, deleteTask }) => {

@@ -1,7 +1,3 @@
-import React from "react";
-
-
-
 const tasksList = ({ tasks, boardTitle, changeStateFoward, changeStateBackwards, deleteTask }) => {
     return tasks?.map((task) => {
         return task.state === boardTitle ? (
