@@ -4,6 +4,8 @@ import RecoverPage from './pages/RecoverPage';
 import CreateAccountPage from './pages/CreateAccountPage';
 import { Routes, Route } from 'react-router-dom';
 
+import './config/firebase'
+
 function App () {
   return (
     <>
