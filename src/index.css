@@ -419,4 +419,9 @@ header {
     height: 10vh;
     font-size: 2vh;
   }
+
+  .submit-error {
+    font-size: 2vh;
+    color: red;
+  }
 }

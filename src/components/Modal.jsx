@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 const Modal = ({ isOpen, onClose, onTaskNameChange, onCreateTask }) => {
     if (!isOpen) return null;
 
