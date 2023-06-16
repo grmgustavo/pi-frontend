@@ -1,5 +1,6 @@
 import Board from "./Board"
 
+// eslint-disable-next-line react/prop-types
 const Boards = ({ tasks, changeStateFoward, changeStateBackwards, deleteTask }) => {
     return (
         <div className="board-container">

@@ -1,10 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Boards from "../components/Boards";
 import Modal from "../components/Modal";
 
+import app from "../config/firebase";
+
+import { getFirestore, addDoc, doc, collection, getDocs, updateDoc, deleteDoc } from "firebase/firestore";
+
+const db = getFirestore(app);
+
 const InitialPage = () => {
+
+    const getTasks = async () => {
+        const tasks = await getDocs(collection(db, "tasks"));
+        return tasks
+    }
+
+    useEffect(() => {
+        getTasks().then((tasks) => {
+            const tasksArray = [];
+            tasks.forEach((doc) => {
+                if (doc.data().user === JSON.parse(localStorage.getItem("user")).uid) {
+                    tasksArray.push({ ...doc.data(), id: doc.id });
+                }
+            });
+            setTasks(tasksArray);
+        });
+    }, []);
+
     const [tasks, setTasks] = useState([]);
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [taskName, setTaskName] = useState("");
 
@@ -16,50 +41,58 @@ const InitialPage = () => {
         setIsModalOpen(false);
     };
 
-    const addTask = (newTask) => {
-        setTasks([...tasks, newTask]);
+    const addTask = async (newTask) => {
+        console.log(newTask);
+
+        try {
+            await addDoc(collection(db, "tasks"), newTask)
+                .then(() => {
+                    window.location.reload();
+                });
+        } catch (error) {
+            console.error(error);
+            alert("Erro ao adicionar tarefa", error);
+        }
     };
 
-    const changeStateFoward = (id, state) => {
+    const changeStateFoward = async (id, state) => {
         if (state === "A fazer") {
-            setTasks(tasks.map((task) => {
-                if (task.id === id) {
-                    task.state = "Fazendo";
-                }
-                return task;
-            }));
+            await updateDoc(doc(db, "tasks", id), {
+                state: "Fazendo",
+            }).then(() => {
+                window.location.reload();
+            });
         }
         if (state === "Fazendo") {
-            setTasks(tasks.map((task) => {
-                if (task.id === id) {
-                    task.state = "Feito";
-                }
-                return task;
-            }));
+            await updateDoc(doc(db, "tasks", id), {
+                state: "Feito",
+            }).then(() => {
+                window.location.reload();
+            });
         }
     };
 
-    const changeStateBackwards = (id, state) => {
+    const changeStateBackwards = async (id, state) => {
         if (state === "Fazendo") {
-            setTasks(tasks.map((task) => {
-                if (task.id === id) {
-                    task.state = "A fazer";
-                }
-                return task;
-            }));
+            await updateDoc(doc(db, "tasks", id), {
+                state: "A fazer",
+            }).then(() => {
+                window.location.reload();
+            });
         }
         if (state === "Feito") {
-            setTasks(tasks.map((task) => {
-                if (task.id === id) {
-                    task.state = "Fazendo";
-                }
-                return task;
-            }));
+            await updateDoc(doc(db, "tasks", id), {
+                state: "Fazendo",
+            }).then(() => {
+                window.location.reload();
+            });
         }
     };
 
-    const deleteTask = (id) => {
-        setTasks(tasks.filter((task) => task.id !== id));
+    const deleteTask = async (id) => {
+        await deleteDoc(doc(db, "tasks", id)).then(() => {
+            window.location.reload();
+        });
     };
 
     const handleTaskNameChange = (event) => {
@@ -71,6 +104,7 @@ const InitialPage = () => {
             id: tasks.length + 1,
             name: taskName,
             state: "A fazer",
+            user: JSON.parse(localStorage.getItem("user")).uid
         };
         addTask(newTask);
         closeModal();
