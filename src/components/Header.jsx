@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 const Header = ({ onOpenModal }) => {
     return (
         <div>
