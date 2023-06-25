@@ -16,7 +16,6 @@ export default function CreateUser () {
             // Se o usuário for autenticado com sucesso, redirecione ele para a página inicial
             if (userCredential) {
                 window.location.href = "/";
-                console.log(userCredential);
                 alert('Usuario Criado com Sucesso');
                 
             }
